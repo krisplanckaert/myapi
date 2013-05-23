@@ -2,11 +2,12 @@
 
 class Api_PageController extends Zend_Controller_Action
 {
-
+    private $pageModel;
+    
     public function init()
     {
         $this->_helper->viewRenderer->setNoRender(true);
-        //$this->_helper->layout->disableLayout();
+        $this->pageModel = new Application_Model_Page();
     }
 
     public function indexAction()
@@ -17,14 +18,13 @@ class Api_PageController extends Zend_Controller_Action
     
     public function getAction()
     {
-        $this->getResponse()
-                ->appendBody('getAction() return');
-        
+                
     }
     
     public function postAction()
     {
-        var_dump($this->_getParam('field'));
+        $titel = $this->_getParam('titel');
+        $omschrijving = $this->_getParam('omschrijving');
         //$this->getResponse()
         //        ->appendBody('postAction() return');
         
